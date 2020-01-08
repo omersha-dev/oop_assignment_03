@@ -151,16 +151,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Desktop\oop_assignment_003\Date.cpp" />
-    <ClCompile Include="..\..\..\..\Desktop\oop_assignment_003\Interval.cpp" />
-    <ClCompile Include="..\..\..\..\Desktop\oop_assignment_003\Source.cpp" />
-    <ClCompile Include="oop_assignment_03.cpp" />
+    <ClCompile Include="Date.cpp" />
+    <ClCompile Include="Interval.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Desktop\oop_assignment_003\Date.h" />
-    <ClInclude Include="..\..\..\..\Desktop\oop_assignment_003\IComparable.h" />
-    <ClInclude Include="..\..\..\..\Desktop\oop_assignment_003\Interval.h" />
-    <ClInclude Include="..\..\..\..\Desktop\oop_assignment_003\IPrintable.h" />
+    <ClInclude Include="Date.h" />
+    <ClInclude Include="IComparable.h" />
+    <ClInclude Include="Interval.h" />
+    <ClInclude Include="IPrintable.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
