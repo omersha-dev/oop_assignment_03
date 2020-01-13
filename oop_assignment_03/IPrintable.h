@@ -1,11 +1,17 @@
 #pragma once
-template <class T>
+#include <iostream>
+using namespace std;
+
 class IPrintable {
 private:
 
 
 public:
-	virtual void ostream& << (ostream& output, const T &other) = 0;
-	virtual void istream& >> (istream& input, T &other) = 0;
+	
+	virtual void toOs(ostream& os) const = 0;
+	friend ostream& operator<< (ostream& output, const IPrintable& toPrint) {
+		toPrint.toOs(output);
+		return output;
+	}
 
 };

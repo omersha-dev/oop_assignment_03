@@ -1,10 +1,13 @@
 #pragma once
-template <class T>
+/* Needs to overload the following operators:
+ * ==, =<, =>, =!,  <, >
+ */
+
 class IComparable {
 private:
 
 
 public:
-	virtual bool operator!= (const T &other) = 0;
+	virtual bool operator <= (const IComparable& other) const = 0;
 
 };

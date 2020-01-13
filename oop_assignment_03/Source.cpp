@@ -1,10 +1,7 @@
-// IComparable - 
-// IPrintable - 
-// Date - 
-/* set's get's (day,month,year)
-	=
-*/
-// Interval - 
+// IComparable: 
+// IPrintable: <<
+// Date: setDay, setMonth, setYear, getDay, getMonth, getYear, =
+// Interval: 
 
 #include <iostream>
 #include <iomanip>
@@ -17,28 +14,34 @@ using namespace std;
 
 void testDate() {
 	Date independence(14, 5, 1948);
+
+	cout << independence << endl;
+
 	Date otherDate = independence;
 
-	cout << "Independence:" << independence << ", Other: " << otherDate << endl;
+	cout << "Independence:" << independence << ", Other: " << otherDate << endl; // Independence:14/05/1948, Other: 14/05/1948
 	otherDate.setMonth(2);
-	cout << "Other date: " << otherDate << endl;
+	cout << "Other date: " << otherDate << endl; // Other date: 14/02/1948
 	otherDate.setDay(29);
-	cout << "Other date: " << otherDate << endl;
+	cout << "Other date: " << otherDate << endl; // Other date: 29/02/1948
 	otherDate.setYear(1947);
-	cout << "Other date: " << otherDate << endl;
+	cout << "Other date: " << otherDate << endl; // Other date: Not a leap year
 
 	otherDate = Date(24, 1, 1959);
-	cout << "Other date: " << otherDate << endl;
+	cout << "Other date: " << otherDate << endl; // Other date: 24/01/1959
 
-	cout << "Comparing using polymorphism" << endl;
+/*	cout << "Comparing using polymorphism" << endl; // Comparing using polymorphism
 	IComparable<Date> *indP = dynamic_cast <IComparable<Date> *> (&independence);
-	cout << "Is independence <= otherDate ? " << (*indP <= otherDate) << endl;
+	cout << "Is independence <= otherDate ? " << (*indP <= otherDate) << endl; // Is independence <= otherDate ? true
 
 	IComparable<Date> *otherP = dynamic_cast <IComparable<Date> *> (&otherDate);
-	cout << "Is other date <= independence ? " << (*otherP <= independence) << endl;
+	cout << "Is other date <= independence ? " << (*otherP <= independence) << endl; // Is other date <= independence ? false
+*/
 
+	int asdf;
+	cin >> asdf;
 }
-
+/*
 void testDateInput() {
 	Date otherDate(1, 1, 1);
 	do {
@@ -105,15 +108,15 @@ void testIntervalInt() {
 	cout << "interval45 || interval13 = " << (interval45 || interval13) << endl;
 	cout << "interval45 || interval24 = " << (interval45 || interval24) << endl;
 
-}
+} */
 
 int main() {
 	cout << boolalpha << setfill('0');
 	testDate();
-	cout << endl << endl;
-	testIntervalInt();
-	cout << endl << endl;
-	testDateInput();
+	// cout << endl << endl;
+	// testIntervalInt();
+	// cout << endl << endl;
+	// testDateInput();
 
 	return 0;
 }
