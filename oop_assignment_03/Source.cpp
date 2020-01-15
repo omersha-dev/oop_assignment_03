@@ -16,7 +16,7 @@ void testDate() {
 	Date independence(14, 5, 1948);
 
 	cout << independence << endl;
-
+	
 	Date otherDate = independence;
 
 	cout << "Independence:" << independence << ", Other: " << otherDate << endl; // Independence:14/05/1948, Other: 14/05/1948
@@ -30,13 +30,13 @@ void testDate() {
 	otherDate = Date(24, 1, 1959);
 	cout << "Other date: " << otherDate << endl; // Other date: 24/01/1959
 
-/*	cout << "Comparing using polymorphism" << endl; // Comparing using polymorphism
-	IComparable<Date> *indP = dynamic_cast <IComparable<Date> *> (&independence);
-	cout << "Is independence <= otherDate ? " << (*indP <= otherDate) << endl; // Is independence <= otherDate ? true
+	cout << "Comparing using polymorphism" << endl; // Comparing using polymorphism
+	IComparable<Date> *indP = dynamic_cast <IComparable<Date> *> (&independence);	
+	//cout << "Is independence <= otherDate ? " << (*indP <= otherDate) << endl; // Is independence <= otherDate ? true
 
-	IComparable<Date> *otherP = dynamic_cast <IComparable<Date> *> (&otherDate);
-	cout << "Is other date <= independence ? " << (*otherP <= independence) << endl; // Is other date <= independence ? false
-*/
+	//IComparable<Date> *otherP = dynamic_cast <IComparable<Date> *> (&otherDate);
+	//cout << "Is other date <= independence ? " << (*otherP <= independence) << endl; // Is other date <= independence ? false
+
 
 	int asdf;
 	cin >> asdf;

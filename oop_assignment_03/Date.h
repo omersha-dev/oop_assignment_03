@@ -3,7 +3,7 @@
 #include "IPrintable.h"
 using namespace std;
 
-class Date : virtual public IPrintable {
+class Date : public IPrintable, public IComparable<Date> {
 
 private:
 	int day, month, year;
@@ -20,32 +20,15 @@ public:
 	void operator=  (const Date& other);
 
 	virtual void toOs(ostream& output) const;
+	virtual void toIS(string input, Date& toSet);
 
-	bool isLeapYear(int yearToCheck) const;
+	bool isLeapYear(int d, int m, int y) const;
 
-	virtual bool operator <= (const IComparable& other) const {
-		const Date* temp = dynamic_cast<const Date*>(&other);
-		if (this->getYear() < temp->getYear()) {
-			return true;
-		}
-		else if (this->getYear() == temp->getYear()) {
-			if (this->getMonth() < temp->getYear()) {
-				return true;
-			}
-			else if (this->getMonth() == temp->getMonth()) {
-				if (this->getDay() <= temp->getMonth()) {
-					return true;
-				}
-				else {
-					return false;
-				}
-			}
-			else {
-				return false;
-			}
-		}
-		else {
-			return false;
-		}
-	}
+	string isValidDate(int d, int m, int y) const;
+	string isValidDate(Date& dateToCheck) const;
+
+	//virtual bool operator <= (const IComparable<Date> & other) const;
+
+	//virtual bool operator == (const IComparable& other) const
+
 };
