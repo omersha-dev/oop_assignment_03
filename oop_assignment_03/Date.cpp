@@ -31,16 +31,16 @@ void Date::toOs(ostream& output) const {
 	output << getDay() << "/" << getMonth() << "/" << getYear();
 }
 
-void Date::toIS(string input, Date& toSet) {
-	int index;
-	index = input.find('/');
-	toSet.setDay((int)input.substr(0, index));
-	input = input.substr(index + 1);
-	index = input.find('/');
-	toSet.setMonth((int)input.substr(0, index));
-	input = input.substr(index + 1);
-	toSet.setYear((int)input);
-}
+//void Date::toIS(string input, Date& toSet) {
+//	int index;
+//	index = input.find('/');
+//	toSet.setDay((int)input.substr(0, index));
+//	input = input.substr(index + 1);
+//	index = input.find('/');
+//	toSet.setMonth((int)input.substr(0, index));
+//	input = input.substr(index + 1);
+//	toSet.setYear((int)input);
+//}
 
 bool Date::isLeapYear(int d, int m, int y) const {
 	if (d == 29 && m == 2) {

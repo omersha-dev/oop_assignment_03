@@ -3,6 +3,7 @@
 #include <string>
 using namespace std;
 
+template <class T>
 class IPrintable {
 private:
 
@@ -15,12 +16,12 @@ public:
 		return output;
 	}
 
-	virtual void toIs(string is, IPrintable& other);
+	/*virtual void toIs(string is, IPrintable& other);
 	friend istream& operator>> (istream& input, IPrintable& toSet) {
 		string str;
 		input >> str;
 		toIS(str, toSet);
 		return input;
-	}
+	}*/
 
 };

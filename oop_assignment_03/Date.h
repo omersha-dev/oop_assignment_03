@@ -3,7 +3,8 @@
 #include "IPrintable.h"
 using namespace std;
 
-class Date : public IPrintable, public IComparable<Date> {
+
+class Date : public IPrintable<Date>, public IComparable<Date> {
 
 private:
 	int day, month, year;
@@ -20,7 +21,7 @@ public:
 	void operator=  (const Date& other);
 
 	virtual void toOs(ostream& output) const;
-	virtual void toIS(string input, Date& toSet);
+	//virtual void toIS(string input, Date& toSet);
 
 	bool isLeapYear(int d, int m, int y) const;
 
