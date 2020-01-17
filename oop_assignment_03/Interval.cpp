@@ -3,27 +3,104 @@
 
 using namespace std;
 
-
 template <class T>
-class  Interval
+Interval<T>::Interval(T first, T second)
 {
-	Interval::Interval<T>(T first, T second)
-	{
-		
-	};
-	void Interval::setLow(T first)
-	{
-		
-	};
-	void Interval::setHigh(T Second)
-	{
-	
-	};
+	this->low = first;
+	this->high = second;
+}
+template<class T>
+void Interval<T>::setLow(T first) { this->low = first; }
+template<class T>
+void Interval<T>::setHigh(T Second) { this->high = Second; }
 
-	T Interval::getLow() const {return;};
-	T Interval::getHigh() const {return };
+template<class T>
+T Interval<T>::getLow() const { return low; }
+template<class T>
+T Interval<T>::getHigh() const { return high; }
 
-	Interval::~Interval()
+template<class T>
+bool Interval<T>::isEmpty() const
+{
+	if (this->low == this->high)
+		return true;
+}
+
+template<class T>
+bool Interval<T>::isBefore(const Interval<T> &other) const
+{
+	if (this->high < other.getLow())
+		return true;
+	return false;
+}
+
+template<class T>
+bool Interval<T>::isAfter(const Interval<T> &other) const
+{
+	if (this->getlow() > other.getHigh())
+		return true;
+	return false;
+}
+
+template<class T>
+bool Interval<T>::intersects(const Interval<T> &other) const
+{
+	if (this->checkInter(other) || other.checkInter(this)
+		return true;
+		return false
+}
+
+template<class T>
+bool Interval<T>::contains(const T &other) const
+{
+	if (this->getLow() < other) && (this->getHigh() > other)
+		return true;
+		return false;
+}
+
+template<class T>
+Interval<T>* Interval<T>::operator&&(const Interval<T>& other)
+{
+	Interval<T> summery = new Interval<T>;
+	T min, max;
+	if (this->intersects(other))
 	{
+
+		if (this->getLow() > other->getLow())
+			min = this->getLow();
+		else
+			min = other.getLow();
+		if (this->getHigh() < other->getHigh())
+			max = this->getHigh();
+		else
+			max = other.getHigh();
+		summery.setLow(min);
+		summery.setHigh(max);
+		return summery
 	}
-};
+	delete(summery);
+	return;
+}
+
+template<class T>
+Interval<T>* Interval<T>::operator||(const Interval<T>& other)
+{
+	Interval<T> summery = new Interval<T>;
+	return summery;
+}
+
+template<class T>
+bool Interval<T>::checkInter(const Interval<T> other)
+{
+	if (this->isAfter(other) || this->isBefore(other) { return false; }
+
+	if (this->getLow() <= other.getLow() && this->getHigh() <= other->getHigh()) { return true; }
+
+	if (this->getLow() <= other.getLow() && this->getHigh() <= other->getHigh()) { return true; }
+
+	if (this->getLow() >= other.getLow() && this->getHigh() >= other->getHigh()) { return true; }
+}
+
+//template<class T>
+//Interval<T>::~Interval()
+//{}
