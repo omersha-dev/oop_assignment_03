@@ -28,8 +28,11 @@ public:
 	string isValidDate(int d, int m, int y) const;
 	string isValidDate(Date& dateToCheck) const;
 
-	//virtual bool operator <= (const IComparable<Date> & other) const;
-
-	//virtual bool operator == (const IComparable& other) const
+	virtual bool operator <= (const IComparable<Date> & other) const;
+	virtual bool operator == (const IComparable<Date> & other) const;
+	virtual bool operator >= (const IComparable<Date> & other) const;
+	virtual bool operator != (const IComparable<Date> & other) const;
+	virtual bool operator < (const IComparable<Date> & other) const;
+	virtual bool operator > (const IComparable<Date> & other) const;
 
 };

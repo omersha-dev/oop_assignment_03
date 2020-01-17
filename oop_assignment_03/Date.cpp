@@ -31,15 +31,20 @@ void Date::toOs(ostream& output) const {
 	output << getDay() << "/" << getMonth() << "/" << getYear();
 }
 
+//void Date::toIS() {
+//	cout << "Banana!" << endl;
+//
+//}
+	
 //void Date::toIS(string input, Date& toSet) {
 //	int index;
 //	index = input.find('/');
-//	toSet.setDay((int)input.substr(0, index));
+//	toSet.setDay(stoi(input.substr(0, index)));
 //	input = input.substr(index + 1);
 //	index = input.find('/');
-//	toSet.setMonth((int)input.substr(0, index));
+//	toSet.setMonth(stoi(input.substr(0, index)));
 //	input = input.substr(index + 1);
-//	toSet.setYear((int)input);
+//	toSet.setYear(stoi(input));
 //}
 
 bool Date::isLeapYear(int d, int m, int y) const {
@@ -78,28 +83,124 @@ string Date::isValidDate(Date& dateToCheck) const {
 	return isValidDate(dateToCheck.getDay(), dateToCheck.getMonth(), dateToCheck.getYear());
 }
 
-//bool Date::operator <= (const IComparable<Date> & other) const {
-//	const Date* temp = dynamic_cast<const Date*>(&other);
-//	if (this->getYear() < temp->getYear()) {
-//		return true;
-//	}
-//	else if (this->getYear() == temp->getYear()) {
-//		if (this->getMonth() < temp->getYear()) {
-//			return true;
-//		}
-//		else if (this->getMonth() == temp->getMonth()) {
-//			if (this->getDay() <= temp->getMonth()) {
-//				return true;
-//			}
-//			else {
-//				return false;
-//			}
-//		}
-//		else {
-//			return false;
-//		}
-//	}
-//	else {
-//		return false;
-//	}
-//}
+bool Date::operator <= (const IComparable<Date> & other) const {
+	const Date temp = dynamic_cast<const Date&>(other);
+	if (this->getYear() < temp.getYear()) {
+		return true;
+	}
+	else if (this->getYear() == temp.getYear()) {
+		if (this->getMonth() < temp.getYear()) {
+			return true;
+		}
+		else if (this->getMonth() == temp.getMonth()) {
+			if (this->getDay() <= temp.getMonth()) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+	}
+	else {
+		return false;
+	}
+	return false;
+}
+
+bool Date::operator == (const IComparable<Date> & other) const {
+	const Date temp = dynamic_cast<const Date&>(other);
+	if ( (this->getDay() != temp.getDay()) || (this->getMonth() != temp.getMonth()) || (this->getYear() != temp.getYear()) )
+		return false;
+	return true;
+}
+
+bool Date::operator >= (const IComparable<Date> & other) const {
+	const Date temp = dynamic_cast<const Date&>(other);
+	if (this->getYear() > temp.getYear()) {
+		return true;
+	}
+	else if (this->getYear() == temp.getYear()) {
+		if (this->getMonth() > temp.getYear()) {
+			return true;
+		}
+		else if (this->getMonth() == temp.getMonth()) {
+			if (this->getDay() >= temp.getMonth()) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+	}
+	else {
+		return false;
+	}
+	return false;
+}
+
+bool Date::operator != (const IComparable<Date> & other) const {
+	const Date temp = dynamic_cast<const Date&>(other);
+	if ((this->getDay() == temp.getDay()) && (this->getMonth() == temp.getMonth()) && (this->getYear() == temp.getYear()))
+		return false;
+	return true;
+}
+
+bool Date::operator < (const IComparable<Date> & other) const {
+	const Date temp = dynamic_cast<const Date&>(other);
+	if (this->getYear() < temp.getYear()) {
+		return true;
+	}
+	else if (this->getYear() == temp.getYear()) {
+		if (this->getMonth() < temp.getMonth()) {
+			return true;
+		}
+		else if (this->getMonth() == temp.getMonth()) {
+			if (this->getDay() < temp.getDay()) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+	}
+	else {
+		return false;
+	}
+	return false;
+}
+
+bool Date::operator > (const IComparable<Date> & other) const {
+	const Date temp = dynamic_cast<const Date&>(other);
+	if (this->getYear() > temp.getYear()) {
+		return true;
+	}
+	else if (this->getYear() == temp.getYear()) {
+		if (this->getMonth() > temp.getMonth()) {
+			return true;
+		}
+		else if (this->getMonth() == temp.getMonth()) {
+			if (this->getDay() > temp.getDay()) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+		}
+	}
+	else {
+		return false;
+	}
+	return false;
+}

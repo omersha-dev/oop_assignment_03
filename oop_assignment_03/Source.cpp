@@ -1,4 +1,4 @@
-// IComparable: 
+// IComparable: <=, ==, >=, !=, <, > -------------------- Done! --------------------
 // IPrintable: <<
 // Date: setDay, setMonth, setYear, getDay, getMonth, getYear, =
 // Interval: 
@@ -32,14 +32,11 @@ void testDate() {
 
 	cout << "Comparing using polymorphism" << endl; // Comparing using polymorphism
 	IComparable<Date> *indP = dynamic_cast <IComparable<Date> *> (&independence);	
-	//cout << "Is independence <= otherDate ? " << (*indP <= otherDate) << endl; // Is independence <= otherDate ? true
+	cout << "Is independence <= otherDate ? " << (*indP <= otherDate) << endl; // Is independence <= otherDate ? true
 
-	//IComparable<Date> *otherP = dynamic_cast <IComparable<Date> *> (&otherDate);
-	//cout << "Is other date <= independence ? " << (*otherP <= independence) << endl; // Is other date <= independence ? false
+	IComparable<Date> *otherP = dynamic_cast <IComparable<Date> *> (&otherDate);
+	cout << "Is other date <= independence ? " << (*otherP <= independence) << endl; // Is other date <= independence ? false
 
-
-	int asdf;
-	cin >> asdf;
 }
 /*
 void testDateInput() {
@@ -117,6 +114,9 @@ int main() {
 	// testIntervalInt();
 	// cout << endl << endl;
 	// testDateInput();
+
+	int asdf;
+	cin >> asdf;
 
 	return 0;
 }

@@ -16,11 +16,10 @@ public:
 		return output;
 	}
 
-	/*virtual void toIs(string is, IPrintable& other);
+	/*virtual void toIs() = 0;
 	friend istream& operator>> (istream& input, IPrintable& toSet) {
-		string str;
 		input >> str;
-		toIS(str, toSet);
+		toIS();
 		return input;
 	}*/
 

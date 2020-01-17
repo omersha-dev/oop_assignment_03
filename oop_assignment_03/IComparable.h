@@ -9,7 +9,11 @@ private:
 
 
 public:
-	//virtual bool operator <= (const T& other) const = 0;
-	//virtual bool operator == (const T& other) const = 0;
+	virtual bool operator <= (const IComparable& other) const = 0;
+	virtual bool operator == (const IComparable& other) const = 0;
+	virtual bool operator >= (const IComparable& other) const = 0;
+	virtual bool operator != (const IComparable& other) const = 0;
+	virtual bool operator < (const IComparable& other) const = 0;
+	virtual bool operator > (const IComparable& other) const = 0;
 
 };
