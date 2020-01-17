@@ -16,6 +16,8 @@ void testDate() {
 	Date independence(14, 5, 1948);
 
 	cout << independence << endl;
+	cout << "ASDFASDFASDFASDF" << endl;
+	cin >> independence;
 	
 	Date otherDate = independence;
 
@@ -38,7 +40,7 @@ void testDate() {
 	cout << "Is other date <= independence ? " << (*otherP <= independence) << endl; // Is other date <= independence ? false
 
 }
-/*
+
 void testDateInput() {
 	Date otherDate(1, 1, 1);
 	do {
@@ -46,7 +48,7 @@ void testDateInput() {
 		cout << otherDate << endl;
 	} while (otherDate != Date(1, 1, 1));
 }
-
+/*
 void testIntervalInt() {
 	Interval<int> interval = Interval<int>(2, 1);
 	cout << interval << endl;
@@ -109,11 +111,11 @@ void testIntervalInt() {
 
 int main() {
 	cout << boolalpha << setfill('0');
-	testDate();
+	// testDate();
 	// cout << endl << endl;
 	// testIntervalInt();
 	// cout << endl << endl;
-	// testDateInput();
+	testDateInput();
 
 	int asdf;
 	cin >> asdf;

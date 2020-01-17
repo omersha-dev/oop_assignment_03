@@ -24,28 +24,36 @@ void Date::operator= (const Date& other) {
 }
 
 void Date::toOs(ostream& output) const {
-	if (!isLeapYear(this->getDay(), this->getMonth(), this->getYear())) {
-		cout << "Not a leap year";
+	string strToPrint = isValidDate(this->getDay(), this->getMonth(), this->getYear()), toOutput;
+	if (strToPrint.compare("Legal") == 0) {
+		if (getDay() < 10) {
+			toOutput += "0" ;
+		}
+		toOutput += to_string(getDay()) + "/";
+		if (getMonth() < 10) {
+			toOutput += "0";
+		}
+		toOutput += to_string(getMonth()) + "/";
+		output << toOutput << getYear();
 		return;
 	}
-	output << getDay() << "/" << getMonth() << "/" << getYear();
+	else {
+		output << strToPrint;
+	}
 }
-
-//void Date::toIS() {
-//	cout << "Banana!" << endl;
-//
-//}
 	
-//void Date::toIS(string input, Date& toSet) {
-//	int index;
-//	index = input.find('/');
-//	toSet.setDay(stoi(input.substr(0, index)));
-//	input = input.substr(index + 1);
-//	index = input.find('/');
-//	toSet.setMonth(stoi(input.substr(0, index)));
-//	input = input.substr(index + 1);
-//	toSet.setYear(stoi(input));
-//}
+void Date::toIs(istream& input) {
+	int index;
+	string str;
+	input >> str;
+	index = str.find('/');
+	this->setDay(stoi(str.substr(0, index)));
+	str = str.substr(index + 1);
+	index = str.find('/');
+	this->setMonth(stoi(str.substr(0, index)));
+	str = str.substr(index + 1);
+	this->setYear(stoi(str));
+}
 
 bool Date::isLeapYear(int d, int m, int y) const {
 	if (d == 29 && m == 2) {
@@ -67,11 +75,11 @@ string Date::isValidDate(int d, int m, int y) const {
 			return "Illegal day for month";
 			break;
 		case (30):
-			if (m == 2 || m == 4 || m == 6 || m == 9 || m == 11) return "Legal";
+			if (m != 2) return "Legal";
 			return "Illegal day for month";
 			break;
 		case (29):
-			if (!isLeapYear(d, m, y)) return "Illegal day for month";
+			if (!isLeapYear(d, m, y)) return "Not a leap year";
 			return "Legal";
 			break;
 		default:

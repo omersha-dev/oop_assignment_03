@@ -21,7 +21,7 @@ public:
 	void operator=  (const Date& other);
 
 	virtual void toOs(ostream& output) const;
-	//virtual void toIS(string input, Date& toSet);
+	virtual void toIs(istream& input);
 
 	bool isLeapYear(int d, int m, int y) const;
 
