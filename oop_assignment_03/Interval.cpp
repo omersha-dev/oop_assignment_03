@@ -45,17 +45,19 @@ bool Interval<T>::isAfter(const Interval<T> &other) const
 template<class T>
 bool Interval<T>::intersects(const Interval<T> &other) const
 {
-	if (this->checkInter(other) || other.checkInter(this)
-		return true;
-		return false
+	if (this->checkInter(other) || other.checkInter(this))	return true;
+
+	return false;
 }
 
 template<class T>
 bool Interval<T>::contains(const T &other) const
 {
-	if (this->getLow() < other) && (this->getHigh() > other)
+	if ((this->getLow() < other) && (this->getHigh() > other))
+	{
 		return true;
-		return false;
+	}
+	return false;
 }
 
 template<class T>
@@ -65,7 +67,6 @@ Interval<T>* Interval<T>::operator&&(const Interval<T>& other)
 	T min, max;
 	if (this->intersects(other))
 	{
-
 		if (this->getLow() > other->getLow())
 			min = this->getLow();
 		else
@@ -76,29 +77,59 @@ Interval<T>* Interval<T>::operator&&(const Interval<T>& other)
 			max = other.getHigh();
 		summery.setLow(min);
 		summery.setHigh(max);
-		return summery
+		return summery;
 	}
-	delete(summery);
-	return;
+	return summery;
 }
 
 template<class T>
 Interval<T>* Interval<T>::operator||(const Interval<T>& other)
 {
 	Interval<T> summery = new Interval<T>;
+	T min, max;
+	if (!this->intersects(other))
+	{
+		if (this->getLow() > other->getLow())
+			min = other->getLow();
+		else
+			min = this.getLow();
+		if (this->getHigh() < other->getHigh())
+			max = other->getHigh();
+		else
+			max = this.getHigh();
+		summery.setLow(min);
+		summery.setHigh(max);
+		return summery;
+	}
 	return summery;
 }
 
 template<class T>
 bool Interval<T>::checkInter(const Interval<T> other)
 {
-	if (this->isAfter(other) || this->isBefore(other) { return false; }
+	if (this->isAfter(other) || this->isBefore(other)) { return false; }
 
 	if (this->getLow() <= other.getLow() && this->getHigh() <= other->getHigh()) { return true; }
 
 	if (this->getLow() <= other.getLow() && this->getHigh() <= other->getHigh()) { return true; }
 
 	if (this->getLow() >= other.getLow() && this->getHigh() >= other->getHigh()) { return true; }
+}
+
+template<class T>
+std::ostream& operator<<(std::ostream& output, const Interval<T>& other)
+{
+	string str = "";
+	if (other.getLow() == 0 && other.getHigh() == 0)
+	{
+		str = "Invalid interval";
+	}
+	else
+	{
+		str = "(" + other.getLow() + "," + other.getHigh() + ")";
+	}
+	output << str;
+	return output;
 }
 
 //template<class T>
