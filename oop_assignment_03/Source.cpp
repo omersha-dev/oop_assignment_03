@@ -9,7 +9,6 @@
 #include "IComparable.h"
 #include "IPrintable.h"
 #include "Interval.h"
-
 using namespace std;
 
 void testDate() {
@@ -48,7 +47,7 @@ void testDateInput() {
 		cout << otherDate << endl;
 	} while (otherDate != Date(1, 1, 1));
 }
-/*
+
 void testIntervalInt() {
 	Interval<int> interval = Interval<int>(2, 1);
 	cout << interval << endl;
@@ -107,15 +106,15 @@ void testIntervalInt() {
 	cout << "interval45 || interval13 = " << (interval45 || interval13) << endl;
 	cout << "interval45 || interval24 = " << (interval45 || interval24) << endl;
 
-} */
+}
 
 int main() {
 	cout << boolalpha << setfill('0');
 	// testDate();
 	// cout << endl << endl;
-	// testIntervalInt();
+	testIntervalInt();
 	// cout << endl << endl;
-	testDateInput();
+	// testDateInput();
 
 	int asdf;
 	cin >> asdf;
