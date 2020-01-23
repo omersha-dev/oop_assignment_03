@@ -13,11 +13,6 @@ using namespace std;
 
 void testDate() {
 	Date independence(14, 5, 1948);
-
-	cout << independence << endl;
-	cout << "ASDFASDFASDFASDF" << endl;
-	cin >> independence;
-	
 	Date otherDate = independence;
 
 	cout << "Independence:" << independence << ", Other: " << otherDate << endl; // Independence:14/05/1948, Other: 14/05/1948
@@ -110,11 +105,11 @@ void testIntervalInt() {
 
 int main() {
 	cout << boolalpha << setfill('0');
-	// testDate();
-	// cout << endl << endl;
+	testDate();
+	cout << endl << endl;
 	testIntervalInt();
-	// cout << endl << endl;
-	// testDateInput();
+	cout << endl << endl;
+	testDateInput();
 
 	int asdf;
 	cin >> asdf;

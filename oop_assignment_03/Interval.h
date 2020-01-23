@@ -10,31 +10,35 @@ class Interval
 private:
 	T low;
 	T high;
-
-	int getLowest(T first, T second) {
-		if (first < second) { return first; }
-		return second;
-	}
-
-	int getHighest(T first, T second) {
-		if (first > second) { return first; }
-		return second;
-	}
+	bool valid;
+	string Problem;
 
 public:
 	Interval() {
 		this->setLow(0);
 		this->setHigh(0);
+		valid = false;
+		Problem = "EMPTY";
 	}
 	Interval(T first, T second) {
 		this->setLow(first);
 		this->setHigh(second);
+		if (first > second)
+		{
+			valid = false;
+			Problem = "Invalid interval";
+		}
+
 	}
 
 	void setLow(T first) { this->low = first; }
 	void setHigh(T second) { this->high = second; }
+	void setValid(bool updateValid) { this->valid = updateValid; }
+	void setProblem(string updateProblem) { this->Problem = updateProblem; }
 	T getLow() const { return low; }
 	T getHigh() const { return high; }
+	bool isValid() const { return valid; }
+	string getProblem() const { return Problem; }
 
 	bool isEmpty() const
 	{
@@ -44,14 +48,14 @@ public:
 
 	bool isBefore(const Interval<T> &other)const
 	{
-		if (this->high < other.getLow())
+		if (this->high <= other.getLow())
 			return true;
 		return false;
 	}
 
 	bool isAfter(const Interval<T> &other)const
 	{
-		if (this->getLow() > other.getHigh())
+		if (this->getLow() >= other.getHigh())
 			return true;
 		return false;
 	}
@@ -72,15 +76,18 @@ public:
 
 	bool checkInter(const Interval<T> other) const
 	{
-		/*if (this->checkInter(other) || other.checkInter(*this))
-		{
-			return true;
-		}*/
+		if (this->isAfter(other) || this->isBefore(other)) { return false; }
+
+		if (this->getLow() <= other.getLow() && this->getHigh() <= other.getHigh()) { return true; }
+
+		if (this->getLow() <= other.getLow() && this->getHigh() <= other.getHigh()) { return true; }
+
+		if (this->getLow() >= other.getLow() && this->getHigh() >= other.getHigh()) { return true; }
 
 		return false;
 	}
 
-	Interval<T>* operator && (const Interval<T> &other)
+	Interval<T> operator && (const Interval<T> &other)
 	{
 		Interval<T> *summery = new Interval<T>;
 		T min, max;
@@ -96,34 +103,53 @@ public:
 				max = other.getHigh();
 			summery->setLow(min);
 			summery->setHigh(max);
-			return summery;
+			summery->setValid(true);
+			return *summery;
 		}
-		return summery;
+		else
+		{
+			summery->setProblem("EMPTY");
+			summery->setValid(false);
+		}
+		return *summery;
 	}
 	Interval<T> operator || (const Interval<T> other)
 	{
-		if (intersects(other)) {
-			T newObj1 = getLowest(this->getLow(), other.getLow());
-			T newObj2 = getHighest(this->getHigh(), other.getHigh());
-
-			Interval<T> newInterval = Interval<T>(newObj1, newObj2);
-			return newInterval;
+		Interval<T> *summery = new Interval<T>;
+		T min, max;
+		if (this->intersects(other))
+		{
+			if (this->getLow() > other.getLow())
+				min = other.getLow();
+			else
+				min = this->getLow();
+			if (this->getHigh() < other.getHigh())
+				max = other.getHigh();
+			else
+				max = this->getHigh();
+			summery->setLow(min);
+			summery->setHigh(max);
+			summery->setValid(true);
+			return *summery;
 		}
-		else {
-			return Interval<T>(0, 0);
+		else
+		{
+			summery->setProblem("Invalid interval");
+			summery->setValid(false);
 		}
+		return *summery;
 	}
 
 	friend ostream& operator<<(ostream& output, const Interval<T> other)
 	{
 		string str = "";
-		if (other.getLow() == 0 && other.getHigh() == 0)
+		if (other.isValid())
 		{
-			str = "Invalid interval";
+			str = "(" + to_string(other.getLow()) + "," + to_string(other.getHigh()) + ")";
 		}
 		else
 		{
-			str = "(" + to_string(other.getLow()) + "," + to_string(other.getHigh()) + ")";
+			str = other.getProblem();
 		}
 		output << str;
 		return output;
