@@ -11,6 +11,16 @@ private:
 	T low;
 	T high;
 
+	int getLowest(T first, T second) {
+		if (first < second) { return first; }
+		return second;
+	}
+
+	int getHighest(T first, T second) {
+		if (first > second) { return first; }
+		return second;
+	}
+
 public:
 	Interval() {
 		this->setLow(0);
@@ -92,7 +102,16 @@ public:
 	}
 	Interval<T> operator || (const Interval<T> other)
 	{
-		return other;
+		if (intersects(other)) {
+			T newObj1 = getLowest(this->getLow(), other.getLow());
+			T newObj2 = getHighest(this->getHigh(), other.getHigh());
+
+			Interval<T> newInterval = Interval<T>(newObj1, newObj2);
+			return newInterval;
+		}
+		else {
+			return Interval<T>(0, 0);
+		}
 	}
 
 	friend ostream& operator<<(ostream& output, const Interval<T> other)
