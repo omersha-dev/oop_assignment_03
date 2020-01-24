@@ -8,7 +8,8 @@ class Date : public IPrintable<Date>, public IComparable<Date> {
 
 private:
 	int day, month, year;
-
+	bool valid;
+	string problem;
 public:
 	void setDay(int d);
 	int getDay() const;
@@ -16,6 +17,10 @@ public:
 	int getMonth() const;
 	void setYear(int y);
 	int getYear() const;
+	bool isValid() const;
+	void setValid(bool validUpdate);
+	string getProblem() const;
+	void setProblem(string problemUpdate);
 
 	Date(int d, int m, int y);
 	void operator=  (const Date& other);
@@ -26,7 +31,8 @@ public:
 	bool isLeapYear(int d, int m, int y) const;
 
 	string isValidDate(int d, int m, int y) const;
-	string isValidDate(Date& dateToCheck) const;
+	bool strToIsValid(string str) const;
+	//string isValidDate(Date& dateToCheck) const;
 
 	virtual bool operator <= (const IComparable<Date> & other) const;
 	virtual bool operator == (const IComparable<Date> & other) const;
