@@ -2,6 +2,7 @@
 #include <string>
 #include "Date.h"
 #include "IComparable.h"
+#include "IPrintable.h"
 
 using namespace std;
 

@@ -106,8 +106,5 @@ int main() {
 	cout << endl << endl;
 	testDateInput();
 
-	int asdf;
-	cin >> asdf;
-
 	return 0;
 }

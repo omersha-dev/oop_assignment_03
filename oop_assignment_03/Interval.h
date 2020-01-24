@@ -145,7 +145,7 @@ public:
 		string str = "";
 		if (other.isValid())
 		{
-			str = "(" + to_string(other.getLow()) + "," + to_string(other.getHigh()) + ")";
+			str = "(" + to_string(other.getLow()) + ", " + to_string(other.getHigh()) + ")";
 		}
 		else
 		{
