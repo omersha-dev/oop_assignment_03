@@ -133,10 +133,6 @@ bool Date::strToIsValid(string str) const
 	else
 		return false;
 }
-//
-//string Date::isValidDate(Date& dateToCheck) const {
-//	return isValidDate(dateToCheck.getDay(), dateToCheck.getMonth(), dateToCheck.getYear());
-//}
 
 bool Date::operator <= (const IComparable<Date> & other) const {
 	const Date temp = dynamic_cast<const Date&>(other);

@@ -1,7 +1,4 @@
 #pragma once
-/* Needs to overload the following operators:
- * ==, =<, =>, =!,  <, >
- */
 
 template <class T>
 class IComparable {
